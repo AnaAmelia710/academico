@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrículas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Matrículas</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark text-center">
+            <tr>
+                <th>Curso</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for m in matriculas %}
+            <tr>
+
+                <td>{{ m.curso.nome }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">Nenhuma matrícula encontrada.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

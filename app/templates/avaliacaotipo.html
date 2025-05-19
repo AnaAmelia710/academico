@@ -1,0 +1,34 @@
+<!-- templates/avaliacaotipo.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tipos de Avaliação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Tipos de Avaliação</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark text-center">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for t in tipos %}
+            <tr>
+                <td>{{ t.nome }}</td>
+                <td>{{ t.descricao }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2" class="text-center">Nenhum tipo de avaliação cadastrado.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
