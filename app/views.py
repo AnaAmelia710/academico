@@ -4,6 +4,9 @@ from django.views import View
 from django.contrib import messages
 from django.views.generic import ListView
 from .models import Pessoa
+from django.views.generic.edit import CreateView
+from .models import Disciplina
+from django.urls import reverse_lazy
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -42,15 +45,17 @@ class CursoListView(ListView):
     template_name = 'curso.html'
     context_object_name = 'cursos'
     
-class CursoDisciplinaListView(ListView):
-    model = CursoDisciplina
-    template_name = 'cursodisciplina.html'
-    context_object_name = 'cursos_disciplinas' 
+class DisciplinaCreateView(CreateView):
+    model = Disciplina
+    fields = ['nome', 'outro_campo']  # substitua pelos campos do seu model
+    template_name = 'disciplina_form.html'  # crie esse template
+    success_url = reverse_lazy('disciplina-list')
 
 class TurmaListView(ListView):
     model = Turma
     template_name = 'turma.html'
     context_object_name = 'turmas'
+
 
 class DisciplinaListView(ListView):
     model = Disciplina
@@ -83,7 +88,10 @@ class OcorrenciaListView(ListView):
     template_name = 'ocorrencia.html'
     context_object_name = 'ocorrencias'
 
+
 class CursoDisciplinaListView(ListView):
     model = CursoDisciplina
-    template_name = 'curso_disciplina.html'
-    context_object_name = 'cursos_disciplinas'
+    template_name = 'cursodisciplina.html'
+    context_object_name = 'cursodisciplinas'
+
+
